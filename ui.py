@@ -5,7 +5,11 @@ from reader import chat_to_df
 
 st.title("Whatsapp Insights")
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a Whatsapp chat")
+
+with st.expander("Don't know how to export a chat?"):
+    st.write("Visit https://faq.whatsapp.com/android/chats/how-to-save-your-chat-history")
+
 @st.cache
 def load_data():
     if uploaded_file is not None:
