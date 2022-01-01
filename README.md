@@ -2,6 +2,8 @@
 
 A tool to generate a report of a Whatsapp conversation.
 
+You can try it at https://share.streamlit.io/juandspy/whatsapp-insights/main/ui.py.
+
 ## How to use
 
 Export your Whatsapp conversation as TXT and upload it using the UI. This UI can be run with
