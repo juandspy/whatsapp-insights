@@ -5,19 +5,27 @@ from reader import chat_to_df
 
 st.title("Whatsapp Insights")
 
-uploaded_file = st.file_uploader("Choose a Whatsapp chat")
+demo_mode = st.checkbox(
+    "Demo mode (uncheck me for uploading your own files)",
+    value = True )
 
-with st.expander("Don't know how to export a chat?"):
-    st.write("Visit https://faq.whatsapp.com/android/chats/how-to-save-your-chat-history")
+if demo_mode:
+    with open("input.txt", "r", encoding="utf8") as f:
+        df = chat_to_df(f)
+else:
+    uploaded_file = st.file_uploader("Choose a Whatsapp chat")
 
-@st.cache
-def load_data():
-    if uploaded_file is not None:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        df = chat_to_df(stringio)
-        return df
-    uploaded_file
-df = load_data()
+    with st.expander("Don't know how to export a chat?"):
+        st.write("Visit https://faq.whatsapp.com/android/chats/how-to-save-your-chat-history")
+
+    @st.cache
+    def load_data():
+        if uploaded_file is not None:
+            stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+            df = chat_to_df(stringio)
+            return df
+        uploaded_file
+    df = load_data()
 
 stacked_bars = st.checkbox("Select this if you want the graphs to be stacked by user")
 
