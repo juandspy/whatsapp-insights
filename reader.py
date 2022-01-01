@@ -37,7 +37,7 @@ def chat_to_df(input_io: io.BytesIO) -> pd.DataFrame:
             message = line.split(":")[2].rstrip()
             parsed_lines.append([date, user, message])
         except IndexError:
-            tqdm.write("Cannot split the line correctly: ", line)
+            tqdm.write(f"Cannot split the line correctly: {line}")
 
     df = pd.DataFrame(parsed_lines,
         columns =['date', 'user', 'message'])
