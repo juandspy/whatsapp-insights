@@ -9,3 +9,5 @@ Export your Whatsapp conversation as TXT and upload it using the UI. This UI can
 ```
 streamlit run ui.py
 ```
+
+You can generate some mock date with the [chat_generator.py](chat_generator.py) file.
