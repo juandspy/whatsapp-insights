@@ -39,3 +39,14 @@ if df is not None:
     from ploter import plot_daily_chat
     fig = plot_daily_chat(df, stacked_bars)
     st.plotly_chart(fig, use_container_width=True)    
+
+    st.write("These are the most common words:")
+    max_words = st.number_input(
+        "Max words", 
+        min_value=10, 
+        max_value=500, 
+        value=100, 
+        step=1)
+    from ploter import plot_wordcloud
+    wordcloud = plot_wordcloud(df["message"].str.cat(sep=' '), max_words)
+    st.image(wordcloud, use_column_width=True)
