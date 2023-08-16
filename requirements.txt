@@ -4,3 +4,4 @@ plotly==5.5.0
 streamlit==1.11.1
 tqdm==4.62.3
 wordcloud==1.8.1
+tornado>=6.3.3 # not directly required, pinned by Snyk to avoid a vulnerability
